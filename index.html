@@ -1,0 +1,63 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17212b">
+  <title>Hotel Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="login-page" id="loginPage">
+    <div class="login-box">
+      <div class="login-logo" aria-hidden="true">🏨</div>
+      <h1>Hotel Management</h1>
+      <p class="login-subtitle">Sign in to manage your hotel</p>
+      <form onsubmit="login(event)">
+        <label for="username">Username</label><input id="username" name="username" autocomplete="username" required value="MAYS">
+        <label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required value="mays@16">
+        <button class="login-btn" type="submit">Sign in</button>
+      </form>
+      <p class="demo-login">Demo login: MAYS / mays@16</p>
+    </div>
+  </section>
+  <div class="app hidden" id="app">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-icon">🏨</span><div><h2>Grand Hotel</h2><span>MANAGEMENT PORTAL</span></div></div>
+      <nav class="sidebar-menu" aria-label="Main navigation">
+        <button class="menu-item active" onclick="showPage('dashboard', this)"><span>📊　Dashboard</span></button>
+        <button class="menu-item" onclick="showPage('rooms', this)"><span>🛏️　Rooms</span></button>
+        <button class="menu-item" onclick="showPage('customers', this)"><span>👥　Customers</span></button>
+        <button class="menu-item" onclick="showPage('bookings', this)"><span>📅　Bookings</span></button>
+        <button class="menu-item" onclick="showPage('payments', this)"><span>💳　Payments</span></button>
+        <button class="menu-item" onclick="showPage('frames', this)"><span>🧠　Knowledge Frames</span></button>
+        <button class="menu-item" onclick="showPage('settings', this)"><span>⚙️　Settings</span></button>
+      </nav>
+      <button class="logout-btn" onclick="logout()">↪　Logout</button>
+    </aside>
+    <main class="main-content">
+      <header class="topbar"><div><h2 id="pageTitle">Dashboard</h2><p id="pageDescription">Overview of hotel operations</p></div><div class="admin-profile"><span class="notification">🔔<span>3</span></span><div class="profile-avatar">A</div><div><strong>Admin</strong><small>Administrator</small></div></div></header>
+      <section class="page active-page" id="dashboard">
+        <div class="welcome-box"><div><h1>Welcome back, Admin</h1><p>Here’s what’s happening at your hotel today.</p></div><div class="date-box" id="currentDate"></div></div>
+        <div class="stats-grid"><article class="stat-card"><div class="stat-icon blue">🛏️</div><div><span>Total Rooms</span><h2>24</h2></div></article><article class="stat-card"><div class="stat-icon green">👥</div><div><span>Guests</span><h2>18</h2></div></article><article class="stat-card"><div class="stat-icon orange">📅</div><div><span>Bookings</span><h2>12</h2></div></article><article class="stat-card"><div class="stat-icon purple">💰</div><div><span>Revenue</span><h2>₹84,500</h2></div></article></div>
+        <div class="dashboard-grid"><section class="panel"><div class="panel-header"><div><h3>Recent Bookings</h3><p>Latest hotel reservations</p></div><button onclick="showPageByName('bookings')">View all →</button></div><div class="table-container"><table><thead><tr><th>Booking</th><th>Customer</th><th>Room</th><th>Status</th></tr></thead><tbody id="recentBookings"></tbody></table></div></section><section class="panel"><div class="panel-header"><div><h3>Room Status</h3><p>Current occupancy overview</p></div></div><div class="progress-container"><div class="progress-info"><span>Occupied</span><strong>75%</strong></div><div class="progress"><div class="progress-bar occupied" style="width:75%"></div></div></div><div class="progress-container"><div class="progress-info"><span>Available</span><strong>25%</strong></div><div class="progress"><div class="progress-bar available-bar" style="width:25%"></div></div></div></section></div>
+      </section>
+      <section class="page" id="rooms"><div class="page-actions"><div><h1>Room Management</h1><p>Manage hotel rooms and availability</p></div><button class="primary-btn" onclick="openModal('roomModal')">＋ Add Room</button></div><div class="filter-bar"><input id="roomSearch" placeholder="Search rooms…" oninput="searchRooms()"><select onchange="filterRooms(this.value)"><option value="all">All rooms</option><option value="available">Available</option><option value="booked">Booked</option></select></div><div class="room-grid" id="roomGrid"></div></section>
+      <section class="page" id="customers"><div class="page-actions"><div><h1>Customer Management</h1><p>Manage registered customers</p></div><button class="primary-btn" onclick="openModal('customerModal')">＋ Add Customer</button></div><div class="filter-bar"><input id="customerSearch" placeholder="Search customers…" oninput="searchCustomers()"></div><div class="panel table-container"><table><thead><tr><th>Customer ID</th><th>Name</th><th>Phone</th><th>Room</th><th>Status</th></tr></thead><tbody id="customerTable"></tbody></table></div></section>
+      <section class="page" id="bookings"><div class="page-actions"><div><h1>Booking Management</h1><p>Track hotel reservations</p></div><button class="primary-btn" onclick="openModal('bookingModal')">＋ New Booking</button></div><div class="panel table-container"><table><thead><tr><th>Booking ID</th><th>Customer</th><th>Room</th><th>Check in</th><th>Check out</th><th>Amount</th><th>Status</th></tr></thead><tbody id="bookingTable"></tbody></table></div></section>
+      <section class="page" id="payments">
+        <div class="page-actions"><div><h1>Payments &amp; Checkout</h1><p>Review guest folios, payment methods, and completed checkouts.</p></div></div>
+        <div class="stats-grid payment-summary"><article class="stat-card"><div class="stat-icon green">₹</div><div><span>Collected</span><h2 id="collectedAmount">₹0</h2></div></article><article class="stat-card"><div class="stat-icon orange">⌛</div><div><span>Outstanding</span><h2 id="outstandingAmount">₹0</h2></div></article><article class="stat-card"><div class="stat-icon blue">✓</div><div><span>Transactions</span><h2 id="transactionCount">0</h2></div></article></div>
+        <div class="panel table-container"><div class="panel-header"><div><h3>Transaction ledger</h3><p>Every payment and checkout is recorded here.</p></div></div><table><thead><tr><th>Receipt</th><th>Booking</th><th>Guest</th><th>Room</th><th>Method</th><th>Amount</th><th>Date</th><th>Status</th></tr></thead><tbody id="paymentTable"></tbody></table></div>
+      </section>
+      <section class="page" id="frames"><div class="page-actions"><div><h1>Knowledge Frames</h1><p>Frame-Based Knowledge Representation</p></div></div><div class="info-box"><h3>Hotel knowledge model</h3><p>Frames organize hotel information into entities, attributes, and relationships.</p></div><div class="frame-grid"><article class="knowledge-frame"><div class="frame-title"><h3>Room Frame</h3></div><div class="slot"><span>Room number</span><strong>Unique identifier</strong></div><div class="slot"><span>Type</span><strong>Single, Double, Deluxe, Suite</strong></div><div class="slot"><span>Status</span><strong>Available or Booked</strong></div></article><article class="knowledge-frame"><div class="frame-title"><h3>Booking Frame</h3></div><div class="slot"><span>Guest</span><strong>Customer record</strong></div><div class="slot"><span>Room</span><strong>Reserved room</strong></div><div class="slot"><span>Dates</span><strong>Check in and check out</strong></div></article></div></section>
+      <section class="page" id="settings"><div class="page-actions"><div><h1>System Settings</h1><p>Configure hotel management system</p></div></div><div class="panel settings-panel"><h3>Hotel details</h3><label for="hotelName">Hotel name</label><input id="hotelName" value="Grand Hotel"><label for="hotelAddress">Address</label><input id="hotelAddress" value="Mumbai, India"><button class="primary-btn" type="button" onclick="alert('Settings saved.')">Save settings</button></div></section>
+    </main>
+  </div>
+  <div class="modal" id="roomModal"><form class="modal-box" onsubmit="addRoom(event)"><button class="close-btn" type="button" onclick="closeModal('roomModal')" aria-label="Close">×</button><h2>Add Room</h2><label for="newRoomNumber">Room number</label><input id="newRoomNumber" type="number" required><label for="newRoomType">Room type</label><select id="newRoomType"><option>Single</option><option>Double</option><option>Deluxe</option><option>Suite</option></select><label for="newRoomPrice">Price per night (₹)</label><input id="newRoomPrice" type="number" min="1" required><button class="primary-btn" type="submit">Add room</button></form></div>
+  <div class="modal" id="customerModal"><form class="modal-box" onsubmit="addCustomer(event)"><button class="close-btn" type="button" onclick="closeModal('customerModal')" aria-label="Close">×</button><h2>Add Customer</h2><label for="newCustomerName">Full name</label><input id="newCustomerName" required><label for="newCustomerPhone">Phone</label><input id="newCustomerPhone" type="tel" required><label for="newCustomerRoom">Room number</label><input id="newCustomerRoom" required><button class="primary-btn" type="submit">Add customer</button></form></div>
+  <div class="modal" id="bookingModal"><form class="modal-box" onsubmit="addBooking(event)"><button class="close-btn" type="button" onclick="closeModal('bookingModal')" aria-label="Close">×</button><h2>New Booking</h2><label for="bookingCustomer">Customer name</label><input id="bookingCustomer" required><label for="bookingRoom">Room number</label><input id="bookingRoom" type="number" required><label for="checkIn">Check in</label><input id="checkIn" type="date" required><label for="checkOut">Check out</label><input id="checkOut" type="date" required><button class="primary-btn" type="submit">Confirm booking</button></form></div>
+  <div class="modal" id="checkoutModal"><form class="modal-box" onsubmit="completeCheckout(event)"><button class="close-btn" type="button" onclick="closeModal('checkoutModal')" aria-label="Close">×</button><h2>Guest checkout</h2><p id="checkoutSummary" class="checkout-summary"></p><label for="checkoutMethod">Payment method</label><select id="checkoutMethod" required><option value="Card">Credit / debit card</option><option value="UPI">UPI</option><option value="Cash">Cash</option><option value="Bank Transfer">Bank transfer</option></select><label for="checkoutAmount">Amount to collect (₹)</label><input id="checkoutAmount" type="number" min="0" step="0.01" required><button class="primary-btn" type="submit">Collect payment &amp; check out</button></form></div>
+  <script src="script.js" defer></script>
+</body>
+</html>

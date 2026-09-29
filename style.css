@@ -1,0 +1,1053 @@
+/* ========================================
+   HOTEL MANAGEMENT SYSTEM
+   PROFESSIONAL ADMIN DASHBOARD
+   ======================================== */
+
+
+/* ---------- RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #263238;
+}
+
+
+/* ---------- LOGIN PAGE ---------- */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #263238;
+}
+
+.login-box {
+    width: 400px;
+    max-width: 90%;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.login-logo {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.login-box h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.login-subtitle {
+    color: #78909c;
+    margin-bottom: 25px;
+}
+
+.login-box label {
+    display: block;
+    text-align: left;
+    margin-top: 15px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cfd8dc;
+    border-radius: 6px;
+    outline: none;
+}
+
+.login-box input:focus {
+    border-color: #455a64;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 13px;
+    margin-top: 25px;
+    background: #263238;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.login-btn:hover {
+    background: #455a64;
+}
+
+.demo-login {
+    margin-top: 18px;
+    color: #90a4ae;
+    font-size: 12px;
+}
+
+
+/* ---------- HIDDEN ---------- */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ---------- APPLICATION ---------- */
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* ---------- SIDEBAR ---------- */
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    background: #17212b;
+    color: white;
+
+    padding: 25px 15px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 5px 10px 30px;
+}
+
+.brand-icon {
+    font-size: 32px;
+}
+
+.brand h2 {
+    font-size: 18px;
+    margin-bottom: 3px;
+}
+
+.brand span {
+    color: #90a4ae;
+    font-size: 9px;
+}
+
+
+/* ---------- SIDEBAR MENU ---------- */
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-item {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 13px;
+
+    background: transparent;
+    border: none;
+
+    color: #cfd8dc;
+
+    border-radius: 7px;
+
+    text-align: left;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: #37474f;
+    color: white;
+}
+
+.menu-item.active {
+    background: #455a64;
+    color: white;
+}
+
+
+/* ---------- LOGOUT ---------- */
+
+.logout-btn {
+    margin-top: auto;
+
+    padding: 13px;
+
+    background: #263238;
+    border: none;
+
+    color: #cfd8dc;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #37474f;
+}
+
+
+/* ---------- MAIN CONTENT ---------- */
+
+.main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    min-height: 100vh;
+}
+
+
+/* ---------- TOP BAR ---------- */
+
+.topbar {
+    height: 80px;
+
+    background: white;
+    border-bottom: 1px solid #e0e0e0;
+
+    padding: 0 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar h2 {
+    font-size: 20px;
+}
+
+.topbar p {
+    margin-top: 4px;
+    color: #90a4ae;
+    font-size: 13px;
+}
+
+
+/* ---------- ADMIN PROFILE ---------- */
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.notification {
+    position: relative;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.notification span {
+    position: absolute;
+
+    top: -7px;
+    right: -8px;
+
+    background: #e53935;
+    color: white;
+
+    font-size: 9px;
+
+    padding: 3px 5px;
+
+    border-radius: 10px;
+}
+
+.profile-avatar {
+    width: 38px;
+    height: 38px;
+
+    background: #455a64;
+    color: white;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+.admin-profile small {
+    display: block;
+    color: #90a4ae;
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+
+/* ---------- PAGE ---------- */
+
+.page {
+    display: none;
+    padding: 35px;
+}
+
+.active-page {
+    display: block;
+}
+
+
+/* ---------- WELCOME ---------- */
+
+.welcome-box {
+    background: #263238;
+    color: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.welcome-box h1 {
+    margin-bottom: 8px;
+    font-size: 25px;
+}
+
+.welcome-box p {
+    color: #cfd8dc;
+}
+
+.date-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 18px;
+    border-radius: 7px;
+}
+
+
+/* ---------- STATISTICS ---------- */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(210px, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card span {
+    color: #78909c;
+    font-size: 13px;
+}
+
+.stat-card h2 {
+    margin-top: 5px;
+    font-size: 24px;
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+}
+
+.blue {
+    background: #e3f2fd;
+}
+
+.green {
+    background: #e8f5e9;
+}
+
+.orange {
+    background: #fff3e0;
+}
+
+.purple {
+    background: #f3e5f5;
+}
+
+
+/* ---------- DASHBOARD GRID ---------- */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr;
+
+    gap: 25px;
+}
+
+
+/* ---------- PANEL ---------- */
+
+.panel {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+    margin-bottom: 25px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.panel-header h3 {
+    margin-bottom: 5px;
+}
+
+.panel-header p {
+    color: #90a4ae;
+    font-size: 12px;
+}
+
+.panel-header button {
+    background: none;
+    border: none;
+
+    color: #455a64;
+
+    cursor: pointer;
+}
+
+
+/* ---------- TABLE ---------- */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #f7f9fa;
+
+    color: #607d8b;
+
+    font-size: 12px;
+
+    text-align: left;
+
+    padding: 14px;
+}
+
+td {
+    padding: 14px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    font-size: 13px;
+}
+
+
+/* ---------- BADGES ---------- */
+
+.badge {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.warning {
+    background: #fff3e0;
+    color: #ef6c00;
+}
+
+.danger {
+    background: #ffebee;
+    color: #c62828;
+}
+
+
+/* ---------- ROOM STATUS ---------- */
+
+.progress-container {
+    margin: 20px 0;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 7px;
+
+    font-size: 13px;
+}
+
+.progress {
+    height: 9px;
+
+    background: #eceff1;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+
+    border-radius: 10px;
+}
+
+.occupied {
+    background: #ff9800;
+}
+
+.available-bar {
+    background: #4caf50;
+}
+
+
+/* ---------- PAGE ACTION ---------- */
+
+.page-actions {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.page-actions h1 {
+    font-size: 26px;
+}
+
+.page-actions p {
+    color: #90a4ae;
+    margin-top: 5px;
+}
+
+
+/* ---------- PRIMARY BUTTON ---------- */
+
+.primary-btn {
+    background: #263238;
+
+    color: white;
+
+    border: none;
+
+    padding: 11px 18px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+.primary-btn:hover {
+    background: #455a64;
+}
+
+
+/* ---------- FILTER BAR ---------- */
+
+.filter-bar {
+    display: flex;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+.filter-bar input,
+.filter-bar select {
+    padding: 11px;
+
+    border: 1px solid #cfd8dc;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    background: white;
+}
+
+.filter-bar input {
+    flex: 1;
+}
+
+.filter-bar input:focus,
+.filter-bar select:focus {
+    border-color: #455a64;
+}
+
+
+/* ---------- ROOMS ---------- */
+
+.room-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+
+    gap: 20px;
+}
+
+.room-card {
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.room-number {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.room-type {
+    color: #78909c;
+    margin: 8px 0;
+}
+
+.room-price {
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.room-facilities {
+    font-size: 12px;
+    color: #78909c;
+    margin-bottom: 15px;
+}
+
+.book-btn {
+    width: 100%;
+
+    padding: 11px;
+
+    margin-top: 12px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #263238;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+.book-btn:hover {
+    background: #455a64;
+}
+
+.book-btn:disabled {
+    background: #b0bec5;
+    cursor: not-allowed;
+}
+
+.checkout-btn {
+    display: inline-block;
+    margin: 8px 0 0 8px;
+    padding: 6px 10px;
+    border: 1px solid #cfd8dc;
+    border-radius: 6px;
+    background: #fff;
+    color: #263238;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.checkout-btn:hover {
+    border-color: #455a64;
+    background: #f5f7fb;
+}
+
+.payment-summary .stat-card h2 {
+    font-size: 21px;
+}
+
+.checkout-summary {
+    padding: 12px 14px;
+    border-radius: 7px;
+    background: #f5f7fb;
+    color: #455a64;
+    line-height: 1.5;
+}
+
+.empty-state {
+    padding: 28px 14px;
+    color: #78909c;
+    text-align: center;
+}
+
+
+/* ---------- KNOWLEDGE FRAMES ---------- */
+
+.info-box {
+    background: #e3f2fd;
+
+    border-left: 4px solid #1976d2;
+
+    padding: 20px;
+
+    margin-bottom: 25px;
+
+    border-radius: 6px;
+}
+
+.info-box h3 {
+    margin-bottom: 8px;
+}
+
+.info-box p {
+    color: #455a64;
+    line-height: 1.6;
+}
+
+.frame-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 20px;
+}
+
+.knowledge-frame {
+    background: white;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.frame-title {
+    background: #263238;
+
+    color: white;
+
+    padding: 18px;
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+}
+
+.frame-title h3 {
+    font-size: 16px;
+}
+
+.slot {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 14px 18px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    font-size: 13px;
+}
+
+.slot span {
+    color: #78909c;
+}
+
+.slot strong {
+    text-align: right;
+}
+
+
+/* ---------- FRAME RELATIONSHIP ---------- */
+
+.frame-relation {
+    margin-top: 25px;
+}
+
+.relationship {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 20px;
+}
+
+.relationship div {
+    background: #eceff1;
+
+    padding: 12px 18px;
+
+    border-radius: 7px;
+
+    font-weight: bold;
+}
+
+.relationship span {
+    color: #78909c;
+}
+
+
+/* ---------- SETTINGS ---------- */
+
+.settings-panel {
+    max-width: 650px;
+}
+
+.settings-panel h3 {
+    margin-bottom: 20px;
+}
+
+.settings-panel label {
+    display: block;
+
+    margin: 15px 0 7px;
+
+    font-weight: 600;
+}
+
+.settings-panel input {
+    margin-bottom: 5px;
+}
+
+
+/* ---------- MODAL ---------- */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    z-index: 500;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-box {
+    width: 420px;
+
+    max-width: 90%;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    position: relative;
+}
+
+.modal-box h2 {
+    margin-bottom: 20px;
+}
+
+.modal-box label {
+    display: block;
+
+    margin: 15px 0 7px;
+
+    font-weight: 600;
+}
+
+.modal-box input,
+.modal-box select {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #cfd8dc;
+
+    border-radius: 7px;
+
+    outline: none;
+
+    background: white;
+}
+
+.modal-box input:focus,
+.modal-box select:focus {
+    border-color: #455a64;
+}
+
+.modal-box .primary-btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.close-btn {
+    position: absolute;
+
+    right: 15px;
+    top: 10px;
+
+    background: none;
+
+    border: none;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    color: #455a64;
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 70px;
+    }
+
+    .brand div:not(.brand-icon) {
+        display: none;
+    }
+
+    .menu-item span {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 70px;
+
+        width: calc(100% - 70px);
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .topbar {
+        padding: 0 15px;
+    }
+
+    .page {
+        padding: 20px 15px;
+    }
+
+    .welcome-box {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+
+    .admin-profile > div:last-child {
+        display: none;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+    }
+
+    .page-actions {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .page-actions h1 {
+        font-size: 22px;
+    }
+
+}
